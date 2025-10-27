@@ -1,0 +1,21 @@
+GIT commands used during project
+1) git init 		= Init git in folder for tracking changes 
+
+2) git status 		= To check number of files content changed and now need to ADD / Commit
+
+3) git add .            = Add file in stage area (Befor commit)
+
+4) git remote add origin https://github.com/UserName/REPO_NAME.git
+Add your  local development on REPO avaialble on github
+Note: origin is nickname / altername of link: https://github.com/UserName/REPO_NAME.git
+
+5) git checkout -b Branch_Name 
+Create New Branch, instead of doing work in main branch
+
+6) git commit -m "Message" 
+Commit changes which already on stage area
+
+7) git log		= Check commit done in working branch
+
+8) git push -u origin BRANCH_NAME
+Push BRANCH_NAME folder to remote repo

@@ -2,6 +2,8 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 
+
+//Create Task -1
 void task1(void *pv) {
   while (1) {
     ESP_LOGI("TASK1", "Running...");
@@ -9,6 +11,8 @@ void task1(void *pv) {
   }
 }
 
+
+//Create Task - 2
 void task2(void *pv) {
   while (1) {
     ESP_LOGI("TASK2", "Running...");
@@ -16,7 +20,9 @@ void task2(void *pv) {
   }
 }
 
-extern "C" void app_main(void) {
+
+//Main
+void app_main(void) {
   xTaskCreate(task1, "task1", 2048, NULL, 1, NULL);
   xTaskCreate(task2, "task2", 2048, NULL, 1, NULL);
 }
