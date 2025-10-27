@@ -1,9 +1,13 @@
 GIT commands used during project
-1) git init 		= Init git in folder for tracking changes 
 
-2) git status 		= To check number of files content changed and now need to ADD / Commit
+1) git init 		
+Init git in folder for tracking changes 
 
-3) git add .            = Add file in stage area (Befor commit)
+2) git status 		
+To check number of files content changed and now need to ADD / Commit
+
+3) git add .            
+Add file in stage area (Befor commit)
 
 4) git remote add origin https://github.com/UserName/REPO_NAME.git
 Add your  local development on REPO avaialble on github
@@ -15,7 +19,26 @@ Create New Branch, instead of doing work in main branch
 6) git commit -m "Message" 
 Commit changes which already on stage area
 
-7) git log		= Check commit done in working branch
+7) git log	
+Check commit done in working branch
+7A)git log --oneline 	
+Number + Commit message in single line
 
 8) git push -u origin BRANCH_NAME
 Push BRANCH_NAME folder to remote repo
+
+9)git branch -m "NEW_NAME"	
+Rename working branch
+
+10)git diff
+Find difference between working file and last staged / commited  file
+
+
+11) Suppose you did small changes and do not wirite seperate commit message, at that time this command is useful
+Two commands:
+git add -A                		//Add file in stage area with Flag -A : Amendement
+git commit --amend --NO-EDIT           //Same commit name but file upto date
+
+
+12) Rename commit message
+git commit --amend -m "New message"
