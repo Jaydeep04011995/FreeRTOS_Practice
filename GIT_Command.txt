@@ -32,7 +32,6 @@ Rename working branch
 
 10)git diff
 Find difference between working file and last staged / commited  file
-<<<<<<< HEAD
 
 
 11) Suppose you did small changes and do not wirite seperate commit message, at that time this command is useful
@@ -45,6 +44,7 @@ git commit --amend --NO-EDIT           //Same commit name but file upto date
 git commit --amend -m "New message"
 
 
+
 13) If anythin update on remotely - merge it with locally
 git pull
 
@@ -53,7 +53,4 @@ git switch --detach #NUMBER_COMMIT
 
 
 15)Back to original main branch
-git switch --detach
-
-
-
+git switch main
