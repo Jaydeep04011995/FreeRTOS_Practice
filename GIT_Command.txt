@@ -19,8 +19,10 @@ Create New Branch, instead of doing work in main branch
 6) git commit -m "Message" 
 Commit changes which already on stage area
 
-7) git log		
+7) git log	
 Check commit done in working branch
+7A)git log --oneline 	
+Number + Commit message in single line
 
 8) git push -u origin BRANCH_NAME
 Push BRANCH_NAME folder to remote repo
