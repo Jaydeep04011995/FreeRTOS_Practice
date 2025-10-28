@@ -43,5 +43,17 @@ git commit --amend --NO-EDIT           //Same commit name but file upto date
 
 12) Rename commit message
 git commit --amend -m "New message"
-=======
->>>>>>> 6c95381513dd78f727908cd790a864f7911550a7
+
+
+13) If anythin update on remotely - merge it with locally
+git pull
+
+14) Move to older version as per mentioned commit
+git switch --detach #NUMBER_COMMIT
+
+
+15)Back to original main branch
+git switch --detach
+
+
+
