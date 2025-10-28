@@ -32,6 +32,7 @@ Rename working branch
 
 10)git diff
 Find difference between working file and last staged / commited  file
+<<<<<<< HEAD
 
 
 11) Suppose you did small changes and do not wirite seperate commit message, at that time this command is useful
@@ -42,3 +43,5 @@ git commit --amend --NO-EDIT           //Same commit name but file upto date
 
 12) Rename commit message
 git commit --amend -m "New message"
+=======
+>>>>>>> 6c95381513dd78f727908cd790a864f7911550a7
