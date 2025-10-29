@@ -1,56 +1,58 @@
-GIT commands used during project
+<<SETUP>>---------------------------------------------------------------------------------------------------
+git init
+Initializes a new, empty Git repository in the current directory, enabling version control for your project.
 
-1) git init 		
-Init git in folder for tracking changes 
+git remote add origin <URL>
+Connects your local repository to a remote repository, typically hosted on a service like GitHub. The name origin is a conventional alias for the remote URL.
 
-2) git status 		
-To check number of files content changed and now need to ADD / Commit
+git checkout -b <branch_name>
+Creates and switches to a new branch, allowing you to work on a feature in isolation without affecting the main branch. 
 
-3) git add .            
-Add file in stage area (Befor commit)
+<<Daily workflow>>---------------------------------------------------------------------------------------------------
+git status
+Shows the status of your working directory, including which files are new, modified, or staged for the next commit.
 
-4) git remote add origin https://github.com/UserName/REPO_NAME.git
-Add your  local development on REPO avaialble on github
-Note: origin is nickname / altername of link: https://github.com/UserName/REPO_NAME.git
+git add .
+Stages all changes in the current directory and its subdirectories, preparing them for a commit.
 
-5) git checkout -b Branch_Name 
-Create New Branch, instead of doing work in main branch
+git commit -m "Commit message"
+Records the staged changes as a new commit in your local repository. The message should be a brief, descriptive summary of the changes.
 
-6) git commit -m "Message" 
-Commit changes which already on stage area
+git push -u origin <branch_name>
+Pushes your local branch and its commits to the remote repository. The -u flag sets the upstream branch, so you can use git push in the future.
 
-7) git log	
-Check commit done in working branch
-7A)git log --oneline 	
-Number + Commit message in single line
-
-8) git push -u origin BRANCH_NAME
-Push BRANCH_NAME folder to remote repo
-
-9)git branch -m "NEW_NAME"	
-Rename working branch
-
-10)git diff
-Find difference between working file and last staged / commited  file
-
-
-11) Suppose you did small changes and do not wirite seperate commit message, at that time this command is useful
-Two commands:
-git add -A                		//Add file in stage area with Flag -A : Amendement
-git commit --amend --NO-EDIT           //Same commit name but file upto date
-
-
-12) Rename commit message
-git commit --amend -m "New message"
-
-
-
-13) If anythin update on remotely - merge it with locally
 git pull
-
-14) Move to older version as per mentioned commit
-git switch --detach #NUMBER_COMMIT
+Fetches the latest changes from the remote repository and merges them into your current local branch. This keeps your local branch up to date with the remote version. 
 
 
-15)Back to original main branch
-git switch main
+<<Viewing history and differences>>---------------------------------------------------------------------------------------------------
+git log
+Displays the commit history for the current branch, showing details such as the commit hash, author, and message.
+
+git log --oneline
+Shows a condensed log, with each commit on a single line, listing the shortened commit hash and the commit message.
+
+git diff
+Displays the difference between your working files and the last staged or committed version.
+
+
+<<Correcting mistakes & Switching>>---------------------------------------------------------------------------------------------------
+git commit --amend --no-edit
+Updates the most recent commit by adding any newly staged changes to it. This is useful for minor fixes or forgotten files.
+
+git commit --amend -m "New commit message"
+Rewrites the commit message of the most recent commit.
+
+git switch --detach <commit_hash>
+Moves your repository to a previous commit, putting you in a "detached HEAD" state. This allows you to inspect past versions of the code.
+
+git switch <branch_name>
+Returns you to a specific branch (e.g., main), resolving a detached HEAD state and allowing you to resume work. 
+
+
+<<Branch management>>---------------------------------------------------------------------------------------------------
+git branch -m <new_name>
+Renames your current local branch to a new name.
+
+git switch main and then git merge --no-ff <branch_name>
+Merges a feature branch into the main branch. The --no-ff (no fast-forward) flag ensures a merge commit is created, which keeps a clear record of when the branch was merged.
