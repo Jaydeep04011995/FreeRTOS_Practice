@@ -54,3 +54,11 @@ git switch --detach #NUMBER_COMMIT
 
 15)Back to original main branch
 git switch main
+
+
+16)Merge Branch with main
+git switch main   // First move into main branch
+git merge --no-ff BRANCH_NAME 
+NOTE: Your main branch must be upto date with stage and commit
+      After merge add new commit in main
+      Then push it on remote HUB
