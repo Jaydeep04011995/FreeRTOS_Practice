@@ -41,6 +41,5 @@ A minimal, well-structured **FreeRTOS** example for **ESP32**, built with **ESP-
 
 ### Clone
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone
 
