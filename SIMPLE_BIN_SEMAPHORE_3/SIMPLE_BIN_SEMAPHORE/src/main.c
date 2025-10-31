@@ -1,13 +1,12 @@
 //Binary semaphore example using FreeRTOS
+//One Task (Task A) gives the semaphore every second
+//Two other tasks (Task B and Task C) wait to take the semaphore and print a message when they receive it
+
 
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"       // Include semaphore header
-
-
-// Declare a binary semaphore handle
-SemaphoreHandle_t xSemaphore;
 
 /*
 What is Semaphore?
@@ -28,11 +27,23 @@ In this case, both workers might try to use the tool simultaneously, leading to 
 The semaphore ensures that only one worker can use the tool at a time, preventing such issues.
 */
 
+
+
+// Declare a binary semaphore handle
+SemaphoreHandle_t xSemaphore;
+
+
+
 //-------------------------------------------------------------------------------------------------
+//TASK-A : Give the semaphore every second
 void taskA(void *pvParameters) {
     while (1) {
+
+        //xSemaphoreGive() = Function to give the semaphore
+        //If the semaphore is already given, this function has no effect.
         printf("Task A: Giving semaphore\n");
         xSemaphoreGive(xSemaphore);           // Signal the semaphore
+
         vTaskDelay(pdMS_TO_TICKS(1000));      // Wait 1 second
     }
 }
@@ -40,11 +51,25 @@ void taskA(void *pvParameters) {
 
 
 //-------------------------------------------------------------------------------------------------
+//taskB : Wait to take the semaphore
 void taskB(void *pvParameters) {
     while (1) {
         // Wait indefinitely until Task A gives the semaphore
         if (xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
             printf("Task B: Received semaphore!\n");
+        }
+    }
+}
+//-------------------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------------------------------
+//taskC : Wait to take the semaphore
+void taskC(void *pvParameters) {
+    while (1) {
+        // Wait indefinitely until Task A gives the semaphore
+        if (xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
+            printf("Task C: Received semaphore!\n");
         }
     }
 }
@@ -65,5 +90,6 @@ void app_main(void) {
     // Create the two tasks
     xTaskCreate(taskA, "TaskA", 2048, NULL, 2, NULL);
     xTaskCreate(taskB, "TaskB", 2048, NULL, 1, NULL);
+    xTaskCreate(taskC, "TaskC", 2048, NULL, 1, NULL);
 }
 //-------------------------------------------------------------------------------------------------
