@@ -25,6 +25,7 @@ git pull
 Fetches the latest changes from the remote repository and merges them into your current local branch. This keeps your local branch up to date with the remote version. 
 
 
+<<<<<<< HEAD
 <<Viewing history and differences>>---------------------------------------------------------------------------------------------------
 git log
 Displays the commit history for the current branch, showing details such as the commit hash, author, and message.
@@ -56,3 +57,4 @@ Renames your current local branch to a new name.
 
 git switch main and then git merge --no-ff <branch_name>
 Merges a feature branch into the main branch. The --no-ff (no fast-forward) flag ensures a merge commit is created, which keeps a clear record of when the branch was merged.
+
