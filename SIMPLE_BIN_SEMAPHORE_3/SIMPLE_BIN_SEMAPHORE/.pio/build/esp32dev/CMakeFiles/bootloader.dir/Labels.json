@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}
