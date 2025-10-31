@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "SIMPLE_BIN_SEMAPHORE",
-    "project_version":    "9dfb419-dirty",
+    "project_version":    "e67d691-dirty",
     "project_path":       "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE",
     "idf_path":           "C:/Users/jaydeep.shah/.platformio/packages/framework-espidf",
     "build_dir":          "D:/FREERTOS/SIMPLE_BIN_SEMAPHORE_3/SIMPLE_BIN_SEMAPHORE/.pio/build/esp32dev",
