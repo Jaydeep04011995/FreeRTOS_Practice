@@ -1,22 +1,20 @@
 /*
-About Example:
-The interrupt needs to be handled immediately, but you can’t do much inside an ISR because:
->> ISRs must be very short (they interrupt everything else).
->> You can’t use normal FreeRTOS APIs that might block or take time.
+About Example: 
+
+Why ISR is critical?
+The interrupt needs to be handled immediately.ISRs must run immediately and return — they cannot wait
+
+But you can’t do much inside an ISR because:
+>> ISRs must be very short (they interrupt everything else, so you may miss other interrupts).
+>> You can’t use normal FreeRTOS APIs that might block or take time. Eg: vTaskDelay, xSemaphoreTake without FromISR, etc are wait type - Don't use it.
 >> Doing long operations (like printing, I/O, or delays) inside an ISR will crash or hang your system.
+>> ISR is on RAM, interrupt/IRAM stacks are limited. Heavy computation or deep recursion can overflow stack.
+>> long ISR prevents the scheduler tick and other tasks from running, possibly triggering watchdog resets.
 
 How It Works??
 The ISR “gives” a semaphore when the event happens.
-(It’s safe and fast — only a few CPU cycles.)
+It’s safe and fast — only a few CPU cycles.
 A FreeRTOS task (running in normal context) “takes” the semaphore and performs the heavy work — like printing logs, toggling LEDs, or processing data.
-
-
-Step:
-1. Create a binary semaphore.
-2. Configure the GPIO pin as input with pull-up and interrupt on falling edge.
-3. Register the ISR handler for the GPIO pin.
-4. In the ISR handler, give the semaphore to signal the task.
-5. Create a FreeRTOS task that waits for the semaphore and toggles an LED when the semaphore is given.
 */
 
 #include <stdio.h>
@@ -39,7 +37,10 @@ static SemaphoreHandle_t xButtonSemaphore;
 //-------------------------------------------------------------------------------------------------
 // Interrupt handler (runs in ISR context)
 // IRAM_ATTR ensures the function is placed in IRAM for fast execution.
-static void IRAM_ATTR button_isr_handler(void *arg) {
+// Note : printf/malloc use locks/heap state that are not ISR-safe — do not call them from ISRs
+//      : ISRs cannot block or sleep. Blocking APIs (vTaskDelay, xSemaphoreTake without FromISR, etc are wait type - Don't use it.) — ISRs must never wait.
+static void IRAM_ATTR button_isr_handler(void *arg) 
+{
 
     //Variable to check if a higher priority task was woken
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
@@ -50,9 +51,7 @@ static void IRAM_ATTR button_isr_handler(void *arg) {
     >> xButtonSemaphore: The semaphore handle to give.
     >> &xHigherPriorityTaskWoken: Pointer to a variable that will be set to pdTRUE if giving the semaphore caused a higher priority task to unblock.
        it means that if the unblocked task has a higher priority than the currently running task, a context switch should be performed at the end of the ISR.
-    */
-
-    /*
+    
     Why we do this?
     >> When the button is pressed, we need to run relevant high priority task, but it won't start until the ISR gives the semaphore.
     >> This means that the running task is less important, and once the ISR routine is done, the kernel will automatically go back to the previous task.
